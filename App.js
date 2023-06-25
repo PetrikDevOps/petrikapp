@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function App() {
+import NewsScreen from './pages/NewsScreen';
+import HelyettesitesScreen from './pages/HelyettesitesScreen';
+import BusScreen from './pages/BusScreen';
+import ProfileScreen from './pages/ProfileScreen';
+import FullArticle from './pages/FullArticle';
+
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function NewsStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="News" component={NewsScreen} />
+      <Stack.Screen name="FullArticle" component={FullArticle} />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Hírek') {
+              iconName = focused ? 'newspaper' : 'newspaper-outline';
+            } else if (route.name === 'Helyettesítés') {
+              iconName = focused ? 'person' : 'person-outline';
+            } else if (route.name === 'Buszok') {
+              iconName = focused ? 'bus' : 'bus-outline';
+            } else if (route.name === 'Profil') {
+              iconName = focused ? 'person-circle' : 'person-circle-outline';
+            }
+
+            // Return the Ionicons component with the specified icon name
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: '#2AB4AB',
+          tabBarInactiveTintColor: '#D9D9D9',
+        })}
+      >
+        <Tab.Screen name="Hírek" component={NewsStack} />
+        <Tab.Screen name="Helyettesítés" component={HelyettesitesScreen} />
+        <Tab.Screen name="Buszok" component={BusScreen} />
+        <Tab.Screen name="Profil" component={ProfileScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
