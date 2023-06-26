@@ -1,39 +1,61 @@
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import Article from '../elements/Article';
 import styles from './styles';
 
-// Sample data for news articles
-const articles = [
-  {
-    id: 1,
-    topic: 'CodeWeek 2023',
-    title: 'Az elveszett Code',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit at imperdiet dui accumsan. Ut ornare lectus sit amet est placerat in egestas erat. Facilisi cras fermentum odio eu',
-    image: require('../assets/adaptive-icon.png'),
-    more: true,
-  },
-  {
-    id: 2,
-    topic: 'CsibeTábor 2023',
-    title: 'Jó volt a csibetábor :3',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit at imperdiet dui accumsan. Ut ornare lectus sit amet est placerat in egestas erat. Facilisi cras fermentum odio eu',
-    image: require('../assets/adaptive-icon.png'),
-    more: true,
-  },
-  // itt majd apibol fetcheljuk a híreket
-];
-
 function NewsScreen() {
   const maxDescriptionLength = 100;
+  const [articles, setArticles] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      setRefreshing(true); // Start refreshing
+      const response = await fetch('https://app.vincus.me/news');
+      const data = await response.json();
+
+      if (Array.isArray(data)) {
+        const articlesWithImageURL = data.map((article) => ({
+          ...article,
+          image_uri: `https://app.vincus.me${article.image_uri}`,
+        }));
+        setArticles(articlesWithImageURL);
+      } else if (typeof data === 'object' && data !== null) {
+        const articleWithImageURL = {
+          ...data,
+          image_uri: `https://app.vincus.me${data.image_uri}`,
+        };
+        setArticles([articleWithImageURL]);
+      } else {
+        console.error('Invalid articles data:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={fetchArticles} />
+      }
+    >
       <Text style={styles.title}>Petrik</Text>
       <View style={styles.line} />
 
       {articles.map((article) => (
-        <Article key={article.id} article={article} maxDescriptionLength={maxDescriptionLength} />
+        <Article
+          key={article.id}
+          article={article}
+          maxDescriptionLength={maxDescriptionLength}
+        />
       ))}
     </ScrollView>
   );

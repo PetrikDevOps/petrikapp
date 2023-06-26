@@ -8,11 +8,11 @@ function FullArticle({ route }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.fullArticleTitle}>{article.title}</Text>
-      <Text style={[styles.topic, {textAlign: 'center'}]}>{article.topic}</Text>
+      <Text style={[styles.topic, { textAlign: 'center' }]}>{article.topic}</Text>
       <View style={styles.line} />
 
-      <Image source={article.image} style={styles.image} />
-      <Text style={styles.description}>{article.description}</Text>
+      <Image source={{ uri: article.image_uri }} style={styles.image} />
+      <Text style={styles.description}>{article.content}</Text>
       <Text style={styles.fullArticle}>{article.fullArticle}</Text>
     </ScrollView>
   );

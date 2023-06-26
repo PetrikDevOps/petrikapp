@@ -31,6 +31,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          tabBarStyle: { backgroundColor: '#252525' },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
@@ -44,16 +45,14 @@ export default function App() {
               iconName = focused ? 'person-circle' : 'person-circle-outline';
             }
 
-            // Return the Ionicons component with the specified icon name
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: '#2AB4AB',
           tabBarInactiveTintColor: '#D9D9D9',
+          headerShown: false, // Remove the top bar from all screens
         })}
         tabBarOptions={{
-          style: {
-            backgroundColor: '#252525', // Set the background color of the navigation bar here
-          },
+          style: { backgroundColor: '#252525' },
         }}
       >
         <Tab.Screen name="Hírek" component={NewsStack} />

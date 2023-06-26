@@ -11,22 +11,19 @@ function Article({ article, maxDescriptionLength }) {
   };
 
   const truncatedDescription =
-    article.description.length > maxDescriptionLength
-      ? article.description.substring(0, maxDescriptionLength - 1).trim() + ' ...'
-      : article.description;
+    article.content.length > maxDescriptionLength
+      ? article.content.substring(0, maxDescriptionLength - 1).trim() + ' ...'
+      : article.content;
 
   return (
     <View>
       <Text style={styles.topic}>{article.topic}</Text>
       <Text style={styles.articleTitle}>{article.title}</Text>
-      <Image source={article.image} style={styles.image} />
+      <Image source={{ uri: article.image_uri }} style={styles.image} />
       <Text style={styles.description}>{truncatedDescription}</Text>
-
-      {article.more && (
-        <TouchableOpacity style={styles.moreContainer} onPress={handlePressMore}>
-          <Text style={styles.moreText}>MORE</Text>
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity style={styles.moreContainer} onPress={handlePressMore}>
+        <Text style={styles.moreText}>MORE</Text>
+      </TouchableOpacity>
       <View style={styles.line} />
     </View>
   );

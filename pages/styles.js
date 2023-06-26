@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     color: '#eaeaea',
+    marginTop: 10,
     marginBottom: 10,
     textAlign: 'center',
   },
