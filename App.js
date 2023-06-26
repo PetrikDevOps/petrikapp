@@ -50,6 +50,11 @@ export default function App() {
           tabBarActiveTintColor: '#2AB4AB',
           tabBarInactiveTintColor: '#D9D9D9',
         })}
+        tabBarOptions={{
+          style: {
+            backgroundColor: '#252525', // Set the background color of the navigation bar here
+          },
+        }}
       >
         <Tab.Screen name="Hírek" component={NewsStack} />
         <Tab.Screen name="Helyettesítés" component={HelyettesitesScreen} />

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#1e1e1e',
     paddingVertical: 20,
     paddingHorizontal: 15,
   },
@@ -25,12 +25,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   articleTitle: {
+    color: '#EAEAEA',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
     width: '100%',
   },
   fullArticleTitle: {
+    color: '#EAEAEA',
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 10,
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   description: {
+    color: '#EAEAEA',
     fontSize: 16,
     marginBottom: 10,
   },
