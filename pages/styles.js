@@ -72,6 +72,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#eaeaea',
     marginVertical: 20,
   },
+  center: {
+    alignItems: 'center',
+  },
+  selectionBox: {
+    height: 50,
+    width: '100%',
+    marginBottom: 10,
+    backgroundColor: '#252525',
+    color: '#eaeaea',
+    borderRadius: 15,
+    border: 'none',
+  },
 });
 
 export default styles;
