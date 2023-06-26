@@ -25,6 +25,12 @@ const styles = StyleSheet.create({
     color: '#2ab4ab',
     marginBottom: 5,
   },
+  bigTopic: {
+    fontSize: 24,
+    color: '#2ab4ab',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
   articleTitle: {
     color: '#EAEAEA',
     fontSize: 24,
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#EAEAEA',
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 10,
   },
   moreContainer: {
