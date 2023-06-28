@@ -31,7 +31,12 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarStyle: { backgroundColor: '#252525' },
+          tabBarStyle: [
+            {
+              display: 'flex',
+            },
+            null,
+          ],
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
