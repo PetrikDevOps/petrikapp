@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 import styles from './styles';
 
 function FullArticle({ route }) {
   const { article } = route.params;
+  const navigation = useNavigation(); // Retrieve the navigation object
+
+  useEffect(() => {
+    if (!isFocused) {
+      navigation.navigate('News')
+    }
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
