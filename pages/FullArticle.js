@@ -9,16 +9,13 @@ function FullArticle({ route }) {
   const [isFocused, setIsFocused] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      setIsFocused(true);
-    });
     const unsubscribeBlur = navigation.addListener('blur', () => {
       setIsFocused(false);
     });
     if (!isFocused) {
       navigation.navigate('News')
     }
-    return unsubscribe;
+    return unsubscribeBlur;
   }, []);
 
   return (
