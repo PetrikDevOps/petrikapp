@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 import styles from './styles';
@@ -6,11 +6,19 @@ import styles from './styles';
 function FullArticle({ route }) {
   const { article } = route.params;
   const navigation = useNavigation(); // Retrieve the navigation object
+  const [isFocused, setIsFocused] = useState(true);
 
   useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setIsFocused(true);
+    });
+    const unsubscribeBlur = navigation.addListener('blur', () => {
+      setIsFocused(false);
+    });
     if (!isFocused) {
       navigation.navigate('News')
     }
+    return unsubscribe;
   }, []);
 
   return (
