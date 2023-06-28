@@ -33,6 +33,7 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarStyle: [
             {
+              backgroundColor: '#252525',
               display: 'flex',
             },
             null,
