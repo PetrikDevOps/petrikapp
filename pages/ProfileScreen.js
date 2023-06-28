@@ -44,7 +44,7 @@ function ProfileScreen() {
       <Text style={styles.title}>Profil</Text>
       <View style={styles.line} />
       <Text style={styles.topic}>Osztály</Text>
-      <View style={styles.line} />
+
       <View style={styles.center}>
         <Picker
           style={styles.selectionBox}
@@ -69,8 +69,9 @@ function ProfileScreen() {
           <Picker.Item label="D" value="d" />
           <Picker.Item label="E" value="e" />
         </Picker>
-        <Button title="Set" onPress={handleSetButtonPress} color="#2AB4AB" />
+        <Button title="Set" onPress={handleSetButtonPress} color={'#252525'} />
       </View>
+      <View style={styles.line} />
       <Text style={styles.topic}>Van egy tippem!</Text>
     </View>
   );

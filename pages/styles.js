@@ -16,14 +16,13 @@ const styles = StyleSheet.create({
   },
   line: {
     height: 1,
-    backgroundColor: '#eaeaea',
-    marginBottom: 20,
-    marginTop: 20,
+    backgroundColor: '#eaeaea3f',
   },
   topic: {
+    marginTop: 10,
     fontSize: 16,
     color: '#2ab4ab',
-    marginBottom: 5,
+    marginBottom: 15,
   },
   bigTopic: {
     fontSize: 24,
@@ -57,15 +56,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   moreContainer: {
-    backgroundColor: '#2ab4ab',
     paddingVertical: 10,
-    paddingHorizontal: 20,
     alignSelf: 'flex-start',
-    borderRadius: 5,
+    marginBottom: 20,
   },
   moreText: {
     fontSize: 16,
-    color: '#ffffff',
+    color: '#2ab4ab',
   },
   articleSeparator: {
     height: 1,
@@ -74,6 +71,7 @@ const styles = StyleSheet.create({
   },
   center: {
     alignItems: 'center',
+    marginBottom: 10,
   },
   selectionBox: {
     height: 50,
@@ -81,7 +79,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#252525',
     color: '#eaeaea',
-    borderRadius: 15,
     border: 'none',
   },
 });
