@@ -6,17 +6,13 @@ import styles from './styles';
 function FullArticle({ route }) {
   const { article } = route.params;
   const navigation = useNavigation(); // Retrieve the navigation object
-  const [isFocused, setIsFocused] = useState(true);
 
   useEffect(() => {
     const unsubscribeBlur = navigation.addListener('blur', () => {
-      setIsFocused(false);
-    });
-    if (!isFocused) {
       navigation.navigate('News')
-    }
+    });
     return unsubscribeBlur;
-  }, []);
+  }, ['focus']);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
