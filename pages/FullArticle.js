@@ -8,11 +8,13 @@ function FullArticle({ route }) {
   const navigation = useNavigation(); // Retrieve the navigation object
 
   useEffect(() => {
-    const unsubscribeBlur = navigation.addListener('blur', () => {
-      navigation.navigate('News')
+    navigation.addListener('blur', () => {
+      navigation.replace('News');
     });
-    return unsubscribeBlur;
-  }, ['focus']);
+    return () => {
+      navigation.removeListener('blur');
+    };
+  }, ['navigation']);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
