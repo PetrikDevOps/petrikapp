@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   bigTopic: {
     fontSize: 24,
     color: '#2ab4ab',
-    textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 20,
+    marginTop: 2,
   },
   articleTitle: {
     color: '#EAEAEA',

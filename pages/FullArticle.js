@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 import styles from './styles';
@@ -19,6 +19,7 @@ function FullArticle({ route }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>{article.title}</Text>
+      <View style={styles.line} />
       <Text style={styles.bigTopic}>{article.topic}</Text>
       <View style={styles.line} />
 
