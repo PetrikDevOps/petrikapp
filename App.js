@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+/*import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -67,5 +67,13 @@ export default function App() {
         <Tab.Screen name="Profil" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
+  );
+}*/
+
+export default function App() {
+  return (
+    <View>
+      <Text>Test</Text>
+    </View>
   );
 }
